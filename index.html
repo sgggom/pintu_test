@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>拼图游戏</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <button id="titleButton" class="title-button" type="button">拼图游戏</button>
+      <div class="status" role="status" aria-live="polite">
+        <span>计时：<strong id="timerText">00:00</strong></span>
+        <span>步数：<strong id="movesText">0</strong></span>
+      </div>
+    </header>
+
+    <section class="board-wrap" aria-label="拼图区">
+      <div id="board" class="board" aria-label="拼图棋盘"></div>
+      <div class="tray-wrap" aria-label="碎片栏区域">
+        <h2 class="tray-title">碎片栏</h2>
+        <div id="tray" class="tray" aria-label="拼图碎片栏"></div>
+      </div>
+      <p id="hintText" class="hint">点击标题打开设置并开始挑战。</p>
+    </section>
+  </main>
+
+  <div id="settingsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal-content settings-modal-content">
+      <div class="settings-header">
+        <h2 id="settingsTitle">游戏设置</h2>
+        <button id="closeSettingsButton" type="button">关闭</button>
+      </div>
+      <section class="controls" aria-label="游戏控制区">
+      <div class="control-group">
+        <label for="presetSelect">示例图片</label>
+        <select id="presetSelect">
+          <option value="city">城市夜景</option>
+          <option value="mountain">山脉日落</option>
+          <option value="forest">森林晨光</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="uploadInput">上传图片</label>
+        <input id="uploadInput" type="file" accept="image/png,image/jpeg,image/webp" />
+      </div>
+
+      <div class="control-group">
+        <label for="gridSizeSelect">棋盘布局</label>
+        <select id="gridSizeSelect" disabled>
+          <option value="fixed" selected>固定 6 x 4</option>
+        </select>
+      </div>
+
+      <div class="control-group buttons">
+        <button id="startButton" type="button">开始游戏</button>
+        <button id="resetButton" type="button">重置</button>
+      </div>
+      </section>
+    </div>
+  </div>
+
+  <div id="winModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+    <div class="modal-content">
+      <h2 id="winTitle">挑战成功</h2>
+      <p id="winStats"></p>
+      <button id="playAgainButton" type="button">再玩一局</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
